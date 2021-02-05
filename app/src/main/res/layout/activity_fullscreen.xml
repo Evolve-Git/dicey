@@ -18,6 +18,7 @@
         android:fontFamily="monospace"
         android:gravity="center"
         android:keepScreenOn="true"
+        android:lines="1"
         android:singleLine="false"
         android:text="@string/dummy_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -26,7 +27,9 @@
         android:textStyle="bold"
         android:typeface="normal"
         app:autoSizeMaxTextSize="50sp"
-        app:autoSizeMinTextSize="30sp" />
+        app:autoSizeMinTextSize="30sp"
+        app:autoSizeStepGranularity="1sp"
+        app:autoSizeTextType="uniform" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
