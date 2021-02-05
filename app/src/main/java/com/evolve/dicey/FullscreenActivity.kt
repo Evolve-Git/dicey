@@ -96,17 +96,15 @@ class FullscreenActivity : AppCompatActivity() {
             if (busy == false){
                 busy = true
                 var temp = dicey[Random.nextInt(6)]
-                GlobalScope.launch {
+                GlobalScope.launch(Dispatchers.Main) {
                     delay((delta * (temp.length) + 1).toLong())
                     busy = false
                 }
                 for (i in 0..temp.length) {
-                    runOnUiThread(java.lang.Runnable() {
-                        GlobalScope.launch { // launch a new coroutine in background and continue
-                            delay((delta * i).toLong())
-                            fullscreenContent.text = temp.subSequence(0, i)
-                        }
-                    })
+                    GlobalScope.launch(Dispatchers.Main) { // launch a new coroutine in background and continue
+                        delay((delta * i).toLong())
+                        fullscreenContent.text = temp.subSequence(0, i)
+                    }
                 }
             }
             //fullscreenContent.text = dicey[Random.nextInt(6)]
