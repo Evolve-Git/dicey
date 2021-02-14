@@ -15,6 +15,7 @@
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/light_blue_600"
         android:fontFamily="monospace"
         android:gravity="center"
         android:keepScreenOn="true"
