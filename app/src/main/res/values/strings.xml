@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Dicey</string>
-    <string name="dummy_content">Touch</string>
+    <string name="main">Touch</string>
+    <string name="setts">Settings</string>
+    <string name="set_n">Names</string>
+    <string name="n1">Igor</string>
+    <string name="n2">Thijs</string>
+    <string name="save">Save</string>
+    <string-array
+        name="d_arr">
+        <item>There is no God.</item>
+        <item>%1$s is really right!</item>
+        <item>%1$s is a little bit right&#8230;</item>
+        <item>No one is right.</item>
+        <item>%1$s is a little bit right&#8230;</item>
+        <item>%1$s is really right!</item>
+    </string-array>
+
 </resources>
