@@ -2,28 +2,29 @@
 package com.evolve.dicey
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.view.MotionEvent
+import android.speech.tts.TextToSpeech
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.*
-import kotlin.random.Random
-import android.content.Context
-import android.content.SharedPreferences
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import kotlinx.coroutines.*
+import java.util.*
+import kotlin.random.Random
 
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-class FullscreenActivity : AppCompatActivity() {
+class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var fullscreenContent: TextView
     private lateinit var fullscreenContentControls: LinearLayout
     private val hideHandler = Handler()
@@ -53,6 +54,16 @@ class FullscreenActivity : AppCompatActivity() {
     private var isFullscreen: Boolean = false
 
     private val hideRunnable = Runnable { hide() }
+
+    lateinit var tts: TextToSpeech
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            // set UK English as language for tts
+            tts.setLanguage(Locale.US)
+            speakOut("Ready!")
+        }
+    }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,14 +99,16 @@ class FullscreenActivity : AppCompatActivity() {
         // while interacting with the UI.
         //findViewById<Button>(R.id.dummy_button).setOnTouchListener(delayHideTouchListener)
 
-        val pref: SharedPreferences = this.getSharedPreferences("settings",Context.MODE_PRIVATE)
+        val pref: SharedPreferences = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
+
+        tts = TextToSpeech(this, this)
 
         fullscreenContent.setOnTouchListener(object : OnSwipeTouchListener(this@FullscreenActivity) {
             override fun onClick() {
                 super.onClick()
 
-                val n1 = pref.getString("name1",resources.getString(R.string.n1))
-                val n2 = pref.getString("name2",resources.getString(R.string.n2))
+                val n1 = pref.getString("name1", resources.getString(R.string.n1))
+                val n2 = pref.getString("name2", resources.getString(R.string.n2))
                 val dicey = resources.getStringArray(R.array.d_arr)
                 val delta = 55
                 var temp = "temp"
@@ -109,6 +122,8 @@ class FullscreenActivity : AppCompatActivity() {
                     } else if ((seed == 4) or (seed == 5)) {
                         temp = String.format(dicey[seed], n2)
                     }
+
+                    speakOut(temp)
 
                     GlobalScope.launch(Dispatchers.Main) {
                         delay((delta * (temp.length) + 1).toLong())
@@ -130,6 +145,22 @@ class FullscreenActivity : AppCompatActivity() {
                 startActivity(intent)
             }*/
         })
+    }
+
+    private fun speakOut(temp: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            tts.speak(temp, TextToSpeech.QUEUE_FLUSH, null, "")
+        } else {
+            @Suppress("DEPRECATION")
+            tts.speak(temp, TextToSpeech.QUEUE_FLUSH, null)
+        }
+    }
+
+    public override fun onDestroy() {
+        // Shutdown TTS
+        tts.stop()
+        tts.shutdown()
+        super.onDestroy()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
