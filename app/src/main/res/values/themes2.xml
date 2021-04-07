@@ -4,11 +4,11 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/light_blue_600</item>
         <item name="colorPrimaryVariant">@color/light_blue_900</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/cardview_light_background</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/light_blue_600</item>
         <item name="colorSecondaryVariant">@color/light_blue_900</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnSecondary">@color/cardview_dark_background</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -24,5 +24,12 @@
     <style name="ThemeOverlay.Bara.FullscreenContainer" parent="">
         <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
         <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+    
+    <style name="Theme.switch" parent="">
+        <!-- Active thumb color & Active track color(30% transparency) -->
+        <item name="colorControlActivated">@color/light_blue_A400</item>
+        <!-- Inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/cardview_light_background</item>
     </style>
 </resources>

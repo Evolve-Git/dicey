@@ -60,8 +60,8 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             // set UK English as language for tts
-            tts.setLanguage(Locale.US)
-            speakOut("Ready!")
+            //tts.setLanguage(Locale.US)
+            setTTSLang()
         }
     }
 
@@ -74,8 +74,7 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         //setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        toolbar.setOnMenuItemClickListener(
-                Toolbar.OnMenuItemClickListener { item: MenuItem? ->
+        toolbar.setOnMenuItemClickListener { item: MenuItem? ->
                     when (item!!.itemId) {
                         R.id.action_settings -> {
                             val intent = Intent(this@FullscreenActivity, SettingsActivity::class.java)
@@ -85,7 +84,6 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     }
                     true
                 }
-        )
 
         isFullscreen = true
 
@@ -99,17 +97,24 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // while interacting with the UI.
         //findViewById<Button>(R.id.dummy_button).setOnTouchListener(delayHideTouchListener)
 
-        val pref: SharedPreferences = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
-
         tts = TextToSpeech(this, this)
+
+        val pref: SharedPreferences = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
         fullscreenContent.setOnTouchListener(object : OnSwipeTouchListener(this@FullscreenActivity) {
             override fun onClick() {
                 super.onClick()
 
+                var dicey: Array<String> = arrayOf()
+                val lang = pref.getInt("lang", R.id.rb1)
+                when (lang) {
+                    R.id.rb1 -> dicey = resources.getStringArray(R.array.d_en)
+                    R.id.rb2 -> dicey = resources.getStringArray(R.array.d_nl)
+                    R.id.rb3 -> dicey = resources.getStringArray(R.array.d_ru)
+                }
+                val is_tts_on = pref.getBoolean("tts", true)
                 val n1 = pref.getString("name1", resources.getString(R.string.n1))
                 val n2 = pref.getString("name2", resources.getString(R.string.n2))
-                val dicey = resources.getStringArray(R.array.d_arr)
                 val delta = 55
                 var temp = "temp"
                 if (busy == false) {
@@ -123,7 +128,9 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                         temp = String.format(dicey[seed], n2)
                     }
 
-                    speakOut(temp)
+                    if (is_tts_on) {
+                        speakOut(temp)
+                    }
 
                     GlobalScope.launch(Dispatchers.Main) {
                         delay((delta * (temp.length) + 1).toLong())
@@ -145,6 +152,23 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 startActivity(intent)
             }*/
         })
+    }
+
+    private fun setTTSLang(){
+        val pref: SharedPreferences = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
+        var result = 0
+        when (pref.getInt("lang", R.id.rb1)) {
+            R.id.rb1 -> {result = tts.setLanguage(Locale.US)
+                        fullscreenContent.setText(R.string.main_en)}
+            R.id.rb2 -> {result = tts.setLanguage(Locale("nl_NL"))
+                        fullscreenContent.setText(R.string.main_nl)}
+            R.id.rb3 -> {result = tts.setLanguage(Locale("ru_RU"))
+                        fullscreenContent.setText(R.string.main_ru)}
+        }
+        if (result == TextToSpeech.LANG_MISSING_DATA
+                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            tts.setLanguage(Locale.getDefault())
+        }
     }
 
     private fun speakOut(temp: String) {

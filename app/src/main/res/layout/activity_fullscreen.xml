@@ -21,7 +21,6 @@
         android:keepScreenOn="true"
         android:lines="1"
         android:singleLine="false"
-        android:text="@string/main"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
