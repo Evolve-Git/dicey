@@ -8,8 +8,6 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.textfield.TextInputEditText
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.view.get
-import java.util.*
 
 class SettingsActivity: AppCompatActivity() {
     private lateinit var settingsContent: ScrollView
