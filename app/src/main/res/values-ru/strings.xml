@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dicey</string>
+    <string name="main">Коснись</string>
+    <string name="setts">Настройки</string>
+    <string name="n">Имена</string>
+    <string name="tts">Синтез речи</string>
+    <string name="lang">Язык</string>
+    <string-array
+        name="dicey">
+        <item>Бога нет.</item>
+        <item>%1$s действительно прав!</item>
+        <item>%1$s немного прав&#8230;</item>
+        <item>Никто не прав.</item>
+        <item>%1$s немного прав&#8230;</item>
+        <item>%1$s действительно прав!</item>
+    </string-array>
+    <string name="lang_nl">Недерландский</string>
+    <string name="lang_en">Английский</string>
+    <string name="lang_ru">Русский</string>
+</resources>

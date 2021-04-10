@@ -1,53 +1,26 @@
 <resources>
     <string name="app_name">Dicey</string>
-    <string name="n1">Igor</string>
-    <string name="n2">Thijs</string>
-    <string name="en">En</string>>
-    <string name="nl">Nl</string>>
-    <string name="ru">Ru</string>>
-    <!--en-->
-    <string name="main_en">Touch</string>
-    <string name="setts_en">Settings</string>
-    <string name="n_en">Names</string>
-    <string name="tts_en">TTS</string>
-    <string name="lang_en">Language</string>
+    <string name="n1" translatable="false">Igor</string>
+    <string name="n2" translatable="false">Thijs</string>
+    <string name="en" translatable="false">en</string>>
+    <string name="nl" translatable="false">nl</string>>
+    <string name="ru" translatable="false">ru</string>>
+
+    <string name="main">Touch</string>
+    <string name="setts">Settings</string>
+    <string name="n">Names</string>
+    <string name="tts">TTS</string>
+    <string name="lang">Language</string>
+    <string name="lang_en">English</string>
+    <string name="lang_nl">Dutch</string>
+    <string name="lang_ru">Russian</string>
     <string-array
-        name="d_en">
+        name="dicey">
         <item>There is no God.</item>
         <item>%1$s is really right!</item>
         <item>%1$s is a little bit right&#8230;</item>
         <item>No one is right.</item>
         <item>%1$s is a little bit right&#8230;</item>
         <item>%1$s is really right!</item>
-    </string-array>
-    <!--nl-->
-    <string name="main_nl">Aanrak</string>
-    <string name="setts_nl">Opties</string>
-    <string name="n_nl">Namen</string>
-    <string name="tts_nl">Tekst naar spraak</string>
-    <string name="lang_nl">Taal</string>
-    <string-array
-        name="d_nl">
-        <item>Er is geen God.</item>
-        <item>%1$s heeft echt gelijk!</item>
-        <item>%1$s heeft een beetje gelijk&#8230;</item>
-        <item>Niemand heft gelijk.</item>
-        <item>%1$s heeft een beetje gelijk&#8230;</item>
-        <item>%1$s heeft echt gelijk!</item>
-    </string-array>
-    <!--ru-->
-    <string name="main_ru">Коснись</string>
-    <string name="setts_ru">Настройки</string>
-    <string name="n_ru">Имена</string>
-    <string name="tts_ru">Синтез речи</string>
-    <string name="lang_ru">Язык</string>
-    <string-array
-        name="d_ru">
-        <item>Бога нет.</item>
-        <item>%1$s действительно прав!</item>
-        <item>%1$s немного прав&#8230;</item>
-        <item>Никто не прав.</item>
-        <item>%1$s немного прав&#8230;</item>
-        <item>%1$s действительно прав!</item>
     </string-array>
 </resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dicey</string>
+    <string name="main">Aanrak</string>
+    <string name="setts">Opties</string>
+    <string name="n">Namen</string>
+    <string name="tts">Tekst naar spraak</string>
+    <string name="lang">Taal</string>
+    <string-array
+        name="dicey">
+        <item>Er is geen God.</item>
+        <item>%1$s heeft echt gelijk!</item>
+        <item>%1$s heeft een beetje gelijk&#8230;</item>
+        <item>Niemand heft gelijk.</item>
+        <item>%1$s heeft een beetje gelijk&#8230;</item>
+        <item>%1$s heeft echt gelijk!</item>
+    </string-array>
+    <string name="lang_en">Engels</string>
+    <string name="lang_ru">Russisch</string>
+    <string name="lang_nl">Nederlands</string>
+</resources>

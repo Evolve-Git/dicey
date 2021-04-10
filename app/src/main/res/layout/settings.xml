@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.Bara"
+    android:theme="@style/Theme.Settings"
     tools:context=".SettingsActivity">
 
     <ScrollView
@@ -21,25 +21,23 @@
             android:id="@+id/sets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_700"
+            android:background="@color/light_blue_900"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_blue_900"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:navigationIcon="@drawable/abc_vector_test"
-                app:title="@string/setts_en" />
+                app:title="@string/setts" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_blue_900"
-                android:text="@string/n_en"
+                android:text="@string/n"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
 
@@ -79,8 +77,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_blue_900"
-                android:text="@string/tts_en"
+                android:text="@string/tts"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
 
@@ -89,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorOnPrimary"
-                android:text="@string/tts_en"
+                android:text="@string/tts"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="?android:attr/textColorPrimary"
                 app:switchTextAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -98,8 +95,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/light_blue_900"
-                android:text="@string/lang_en"
+                android:text="@string/lang"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
 
@@ -115,7 +111,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/en"
+                    android:hint="@string/en"
+                    android:text="@string/lang_en"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <RadioButton
@@ -123,7 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/nl"
+                    android:hint="@string/nl"
+                    android:text="@string/lang_nl"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
                 <RadioButton
@@ -131,7 +129,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/ru"
+                    android:hint="@string/ru"
+                    android:text="@string/lang_ru"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
             </RadioGroup>
 

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Bara" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Settings" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/light_blue_600</item>
         <item name="colorPrimaryVariant">@color/light_blue_900</item>
@@ -15,7 +15,7 @@
         <item name="colorAccent">@color/light_blue_900</item>
     </style>
 
-    <style name="ThemeOverlay.Bara.FullscreenContainer" parent="">
+    <style name="ThemeOverlay.Settings.FullscreenContainer" parent="">
         <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
         <item name="fullscreenTextColor">@color/light_blue_A400</item>
     </style>

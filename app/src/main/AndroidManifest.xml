@@ -14,12 +14,12 @@
         android:label="Dicey"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Theme.Dicey">
         <activity
             android:name=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyApplication.Fullscreen"
+            android:theme="@style/Theme.Dicey.Fullscreen"
             android:screenOrientation= "sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,7 @@
             android:parentActivityName=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyApplication.Fullscreen"
+            android:theme="@style/Theme.Dicey.Fullscreen"
             android:screenOrientation= "sensorLandscape">
         </activity>
     </application>
