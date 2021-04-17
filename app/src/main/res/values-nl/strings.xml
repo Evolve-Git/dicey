@@ -18,4 +18,7 @@
     <string name="lang_en">Engels</string>
     <string name="lang_ru">Russisch</string>
     <string name="lang_nl">Nederlands</string>
+    <string name="def">Standaard</string>
+    <string name="on">Aan</string>
+    <string name="off">Uit</string>
 </resources>

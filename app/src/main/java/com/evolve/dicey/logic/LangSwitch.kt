@@ -1,4 +1,4 @@
-package com.evolve.dicey
+package com.evolve.dicey.logic
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,13 +9,8 @@ fun setLocale(context: Context): Context {
 
     val pref: SharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
-    //Credits to Idan Atsmon
-    val savedLocale = Locale(pref.getString("lang", "en").toString()) // else return the original untouched context
-
-    // as part of creating a new context that contains the new locale we also need to override the default locale.
+    val savedLocale = Locale(pref.getString("lang", "en").toString())
     Locale.setDefault(savedLocale)
-
-    // create new configuration with the saved locale
     val config = Configuration()
     config.setLocale(savedLocale)
 

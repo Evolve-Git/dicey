@@ -25,11 +25,9 @@
         <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
         <item name="fullscreenTextColor">@color/light_blue_A200</item>
     </style>
-    
-    <style name="Theme.switch" parent="">
-        <!-- Active thumb color & Active track color(30% transparency) -->
-        <item name="colorControlActivated">@color/light_blue_A400</item>
-        <!-- Inactive thumb color -->
-        <item name="colorSwitchThumbNormal">@color/cardview_light_background</item>
+
+    <style name="SwitchTextAppearance" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/white</item>
     </style>
+
 </resources>

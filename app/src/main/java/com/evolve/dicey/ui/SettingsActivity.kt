@@ -1,4 +1,4 @@
-package com.evolve.dicey
+package com.evolve.dicey.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,6 +8,9 @@ import android.widget.*
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.textfield.TextInputEditText
 import androidx.appcompat.widget.SwitchCompat
+import com.evolve.dicey.R
+import com.evolve.dicey.logic.Prefs
+import com.evolve.dicey.logic.setLocale
 import java.util.*
 
 class SettingsActivity: AppCompatActivity() {
@@ -28,13 +31,23 @@ class SettingsActivity: AppCompatActivity() {
         val edit1: TextInputEditText = findViewById(R.id.edit1)
         val edit2: TextInputEditText = findViewById(R.id.edit2)
         val switchTTS: SwitchCompat = findViewById(R.id.switch1)
+        val b1: Button = findViewById(R.id.button1)
+        val b2: Button = findViewById(R.id.button2)
         val rg: RadioGroup = findViewById(R.id.rg)
-        val pref = getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val pref = Prefs(this)
 
-        edit1.setText(pref.getString("name1", resources.getString(R.string.n1)))
-        edit2.setText(pref.getString("name2", resources.getString(R.string.n2)))
+        edit1.setText(pref.n1)
+        edit2.setText(pref.n2)
 
-        switchTTS.isChecked = pref.getBoolean("tts", true)
+        b1.setOnClickListener{
+            edit1.setText(resources.getString(R.string.n1))
+        }
+
+        b2.setOnClickListener{
+            edit2.setText(resources.getString(R.string.n2))
+        }
+
+        switchTTS.isChecked = pref.isTTSon
 
         when (Locale.getDefault().language) {
             "nl" -> rg.check(R.id.rb2)
@@ -49,12 +62,10 @@ class SettingsActivity: AppCompatActivity() {
         val edit2: TextInputEditText = findViewById(R.id.edit2)
         val switchTTS: SwitchCompat = findViewById(R.id.switch1)
         val rg: RadioGroup = findViewById(R.id.rg)
-        val pref = getSharedPreferences("settings", Context.MODE_PRIVATE)
-        val prefeditor = pref.edit()
-        prefeditor.putString("name1", edit1.text.toString())
-        prefeditor.putString("name2", edit2.text.toString())
-        prefeditor.putBoolean("tts", switchTTS.isChecked)
-        prefeditor.putString("lang", findViewById<RadioButton>(rg.checkedRadioButtonId).hint.toString())
-        prefeditor.apply()
+        val pref = Prefs(this)
+        pref.n1 = edit1.text.toString()
+        pref.n2 = edit2.text.toString()
+        pref.isTTSon = switchTTS.isChecked
+        pref.lang = findViewById<RadioButton>(rg.checkedRadioButtonId).hint.toString()
     }
 }

@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dicey">
         <activity
-            android:name=".FullscreenActivity"
+            android:name=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/Theme.Dicey.Fullscreen"
@@ -28,8 +28,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
-            android:parentActivityName=".FullscreenActivity"
+            android:name=".ui.SettingsActivity"
+            android:parentActivityName=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:theme="@style/Theme.Dicey.Fullscreen"

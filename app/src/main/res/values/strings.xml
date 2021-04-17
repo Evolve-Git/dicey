@@ -9,7 +9,10 @@
     <string name="main">Touch</string>
     <string name="setts">Settings</string>
     <string name="n">Names</string>
-    <string name="tts">TTS</string>
+    <string name="def">Default</string>
+    <string name="tts">Text to speech</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
     <string name="lang">Language</string>
     <string name="lang_en">English</string>
     <string name="lang_nl">Dutch</string>

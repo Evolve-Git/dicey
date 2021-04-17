@@ -1,10 +1,8 @@
-
-package com.evolve.dicey
+package com.evolve.dicey.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
@@ -12,14 +10,17 @@ import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.evolve.dicey.R
+import com.evolve.dicey.logic.Prefs
+import com.evolve.dicey.logic.setLocale
 import kotlinx.coroutines.*
 import java.util.*
 import kotlin.random.Random
 
 class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var fullscreenContent: TextView
-    var busy = false
-    lateinit var tts: TextToSpeech
+    private var busy = false
+    private lateinit  var tts: TextToSpeech
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(setLocale(base))
@@ -41,15 +42,13 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fullscreenContent = findViewById(R.id.fullscreen_content)
         tts = TextToSpeech(this, this)
-        val pref: SharedPreferences = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
+        val pref = Prefs(this)
 
         toolbar.setOnMenuItemClickListener { item: MenuItem? ->
                     when (item!!.itemId) {
                         R.id.action_settings -> {
-                            val intent = Intent(
-                                this@FullscreenActivity,
-                                SettingsActivity::class.java
-                            )
+                            val intent = Intent(this@FullscreenActivity,
+                                SettingsActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP) //Prevents creation of multiple instances of the Activity.
                             startActivity(intent)
                         }
@@ -58,25 +57,19 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
 
         fullscreenContent.setOnClickListener{
-            val isTTSon = pref.getBoolean("tts", true)
-            val n1 = pref.getString("name1", resources.getString(R.string.n1))
-            val n2 = pref.getString("name2", resources.getString(R.string.n2))
             val delta = 55
             val dicey = resources.getStringArray(R.array.dicey)
             var temp = "temp"
 
-            if (busy == false) {
+            if (!busy) {
                 busy = true
-                val seed = Random.nextInt(6)
-                if ((seed == 0) or (seed == 3)) {
-                    temp = dicey[seed]
-                } else if ((seed == 1) or (seed == 2)) {
-                    temp = String.format(dicey[seed], n1)
-                } else if ((seed == 4) or (seed == 5)) {
-                    temp = String.format(dicey[seed], n2)
+                when (val seed = Random.nextInt(6)){
+                    0, 3 -> temp = dicey[seed]
+                    1, 2 -> temp = String.format(dicey[seed], pref.n1)
+                    4, 5 -> temp = String.format(dicey[seed], pref.n2)
                 }
 
-                if (isTTSon) {
+                if (pref.isTTSon) {
                     speakOut(temp)
                 }
 
@@ -85,7 +78,7 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     busy = false
                 }
                 for (i in 0..temp.length) {
-                    GlobalScope.launch(Dispatchers.Main) { // launch a new coroutine in background and continue
+                    GlobalScope.launch(Dispatchers.Main) {
                         delay((delta * i).toLong())
                         fullscreenContent.text = temp.subSequence(0, i)
                     }
@@ -103,12 +96,12 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun setTTSLang(){
-        val pref: SharedPreferences = this.getSharedPreferences("settings", Context.MODE_PRIVATE)
-        val result = tts.setLanguage(Locale(pref.getString("lang", "en").toString()))
+        val pref = Prefs(this)
+        val result = tts.setLanguage(Locale(pref.lang))
 
         if (result == TextToSpeech.LANG_MISSING_DATA
                 || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-            tts.setLanguage(Locale("en"))
+            tts.language = Locale("en")
         }
     }
 

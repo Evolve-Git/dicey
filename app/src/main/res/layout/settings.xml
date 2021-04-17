@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.Settings"
-    tools:context=".SettingsActivity">
+    tools:context=".ui.SettingsActivity">
 
     <ScrollView
         android:id="@+id/setts"
@@ -37,46 +37,86 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:text="@string/n"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
 
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit1"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorOnPrimary"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="@string/n1"
-                    android:textSize="20sp" />
+                    android:layout_weight="2">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/colorOnPrimary"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@string/n1"
+                        android:textSize="20sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/def"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit2"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorOnPrimary"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:text="@string/n2"
-                    android:textSize="20sp" />
+                    android:layout_weight="2">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edit2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/colorOnPrimary"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@string/n2"
+                        android:textSize="20sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button"
+                    android:text="@string/def"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:text="@string/tts"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
@@ -86,15 +126,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorOnPrimary"
-                android:text="@string/tts"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="?android:attr/textColorPrimary"
-                app:switchTextAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textColor="@color/white"
+                android:textOff="@string/off"
+                android:textOn="@string/on"
+                android:thumb="@drawable/custom_thumb"
+                app:showText="true"
+                app:splitTrack="false"
+                app:switchPadding="4dp"
+                app:switchTextAppearance="@style/SwitchTextAppearance"
+
+                app:thumbTextPadding="4dp"
+                app:track="@drawable/custom_track" />
+
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:text="@string/lang"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
