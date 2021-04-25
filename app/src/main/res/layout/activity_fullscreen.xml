@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/light_blue_600"
     android:theme="@style/ThemeOverlay.Dicey.FullscreenContainer"
-    tools:context=".FullscreenActivity">
+    tools:context="ui.FullscreenActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -15,19 +15,24 @@
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="8sp"
+        android:layout_marginEnd="8sp"
         android:fontFamily="monospace"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:lines="1"
-        android:singleLine="false"
+        android:maxLines="1"
+        android:shadowColor="@color/light_blue_900"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="1"
         android:text="@string/main"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="?attr/fullscreenTextColor"
-        android:textSize="50sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:autoSizeMaxTextSize="50sp"
-        app:autoSizeMinTextSize="30sp"
+        app:autoSizeMinTextSize="20sp"
         app:autoSizeStepGranularity="1sp"
         app:autoSizeTextType="uniform" />
 

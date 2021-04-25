@@ -1,0 +1,34 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+android:ordering="together">
+
+    <objectAnimator
+        android:propertyName="TextColor"
+        android:duration="200"
+        android:valueFrom="@color/light_blue_A200"
+        android:valueTo="#FFFF00FF"/>
+
+    <objectAnimator
+        android:propertyName="TextColor"
+        android:duration="200"
+        android:valueFrom="#FFFF00FF"
+        android:valueTo="#FF0000FF"/>
+
+    <objectAnimator
+        android:propertyName="TextColor"
+        android:duration="200"
+        android:valueFrom="#FF0000FF"
+        android:valueTo="#FF00FFFF"/>
+
+    <objectAnimator
+        android:propertyName="TextColor"
+        android:duration="200"
+        android:valueFrom="#FF00FFFF"
+        android:valueTo="#FF00FF00"/>
+
+    <objectAnimator
+        android:propertyName="TextColor"
+        android:duration="200"
+        android:valueFrom="#FF00FF00"
+        android:valueTo="@color/light_blue_A200"/>
+</set>
+

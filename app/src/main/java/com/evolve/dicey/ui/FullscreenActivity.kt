@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.evolve.dicey.R
 import com.evolve.dicey.logic.Prefs
+import com.evolve.dicey.logic.Dicey
 import com.evolve.dicey.logic.setLocale
 import kotlinx.coroutines.*
 import java.util.*
@@ -42,13 +43,13 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fullscreenContent = findViewById(R.id.fullscreen_content)
         tts = TextToSpeech(this, this)
-        val pref = Prefs(this)
+        val dicey = Dicey(this, fullscreenContent)
 
         toolbar.setOnMenuItemClickListener { item: MenuItem? ->
                     when (item!!.itemId) {
                         R.id.action_settings -> {
                             val intent = Intent(this@FullscreenActivity,
-                                SettingsActivity::class.java)
+                                    SettingsActivity::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP) //Prevents creation of multiple instances of the Activity.
                             startActivity(intent)
                         }
@@ -57,33 +58,16 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
 
         fullscreenContent.setOnClickListener{
-            val delta = 55
-            val dicey = resources.getStringArray(R.array.dicey)
-            var temp = "temp"
-
+            dicey.animate(Random.nextInt(8))
+            //dicey.animate(3)
+            /*
             if (!busy) {
-                busy = true
-                when (val seed = Random.nextInt(6)){
-                    0, 3 -> temp = dicey[seed]
-                    1, 2 -> temp = String.format(dicey[seed], pref.n1)
-                    4, 5 -> temp = String.format(dicey[seed], pref.n2)
-                }
+                //busy = true
 
                 if (pref.isTTSon) {
                     speakOut(temp)
-                }
+                }*/
 
-                GlobalScope.launch(Dispatchers.Main) {
-                    delay((delta * (temp.length) + 1).toLong())
-                    busy = false
-                }
-                for (i in 0..temp.length) {
-                    GlobalScope.launch(Dispatchers.Main) {
-                        delay((delta * i).toLong())
-                        fullscreenContent.text = temp.subSequence(0, i)
-                    }
-                }
-            }
         }
             /* in case i want to add swipe
             fullscreenContent.setOnTouchListener(object :
