@@ -5,32 +5,24 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.evolve.dicey.R
-import com.evolve.dicey.logic.Prefs
 import com.evolve.dicey.logic.Dicey
+import com.evolve.dicey.logic.RANDOM
 import com.evolve.dicey.logic.setLocale
 import kotlinx.coroutines.*
 import java.util.*
-import kotlin.random.Random
 
-class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+class FullscreenActivity : AppCompatActivity() {
     private lateinit var fullscreenContent: TextView
     private var busy = false
-    private lateinit  var tts: TextToSpeech
+    private lateinit var dicey: Dicey
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(setLocale(base))
-    }
-
-    override fun onInit(status: Int) {
-        if (status == TextToSpeech.SUCCESS) {
-            setTTSLang()
-        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -42,8 +34,7 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         //setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         fullscreenContent = findViewById(R.id.fullscreen_content)
-        tts = TextToSpeech(this, this)
-        val dicey = Dicey(this, fullscreenContent)
+        dicey = Dicey(this, fullscreenContent)
 
         toolbar.setOnMenuItemClickListener { item: MenuItem? ->
                     when (item!!.itemId) {
@@ -58,16 +49,15 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 }
 
         fullscreenContent.setOnClickListener{
-            dicey.animate(Random.nextInt(8))
-            //dicey.animate(3)
-            /*
             if (!busy) {
-                //busy = true
+                busy = true
+                dicey.animate(RANDOM)
 
-                if (pref.isTTSon) {
-                    speakOut(temp)
-                }*/
-
+                GlobalScope.launch(Dispatchers.Main) {
+                    delay(1100)
+                    busy = false
+                }
+            }
         }
             /* in case i want to add swipe
             fullscreenContent.setOnTouchListener(object :
@@ -79,31 +69,10 @@ class FullscreenActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         })*/
     }
 
-    private fun setTTSLang(){
-        val pref = Prefs(this)
-        val result = tts.setLanguage(Locale(pref.lang))
-
-        if (result == TextToSpeech.LANG_MISSING_DATA
-                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-            tts.language = Locale("en")
-        }
-    }
-
-    private fun speakOut(temp: String) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            tts.speak(temp, TextToSpeech.QUEUE_FLUSH, null, "")
-        } else {
-            @Suppress("DEPRECATION")
-            tts.speak(temp, TextToSpeech.QUEUE_FLUSH, null)
-        }
-    }
-
     public override fun onDestroy() {
         super.onDestroy()
 
-        // Shutdown TTS
-        tts.stop()
-        tts.shutdown()
+        dicey.killTTS()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

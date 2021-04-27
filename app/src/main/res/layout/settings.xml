@@ -162,27 +162,36 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null"
                     android:hint="@string/en"
                     android:text="@string/lang_en"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
 
                 <RadioButton
                     android:id="@+id/rb2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null"
                     android:hint="@string/nl"
                     android:text="@string/lang_nl"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
 
                 <RadioButton
                     android:id="@+id/rb3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/custom_radiobutton"
+                    android:button="@null"
                     android:hint="@string/ru"
                     android:text="@string/lang_ru"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/white" />
             </RadioGroup>
 
         </LinearLayout>
