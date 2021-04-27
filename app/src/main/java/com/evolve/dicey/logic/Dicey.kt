@@ -16,12 +16,13 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 
-class Dicey(private val context: Context, private val view: TextView){
+class Dicey(private var context: Context, private val view: TextView){
     private val pref = Prefs(context)
-    private val dicey: Array<String> = context.resources.getStringArray(R.array.dicey)
     private val tts = TTS(context)
 
     private fun dice(): String{
+        setLocale(context)
+        val dicey: Array<String> = context.resources.getStringArray(R.array.dicey)
         return when (val seed = Random.nextInt(6)) {
             0, 3 -> dicey[seed]
             1, 2 -> String.format(dicey[seed], pref.n1)

@@ -41,7 +41,8 @@ class FullscreenActivity : AppCompatActivity() {
                         R.id.action_settings -> {
                             val intent = Intent(this@FullscreenActivity,
                                     SettingsActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP) //Prevents creation of multiple instances of the Activity.
+                            //Prevents creation of multiple instances of the Activity.
+                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
                             startActivity(intent)
                         }
                     }

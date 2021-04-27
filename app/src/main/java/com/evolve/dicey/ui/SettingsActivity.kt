@@ -1,17 +1,21 @@
 package com.evolve.dicey.ui
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
-import android.widget.*
-import androidx.appcompat.widget.Toolbar
-import com.google.android.material.textfield.TextInputEditText
+import android.os.Bundle
+import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.NavUtils
 import com.evolve.dicey.R
 import com.evolve.dicey.logic.Prefs
 import com.evolve.dicey.logic.setLocale
+import com.google.android.material.textfield.TextInputEditText
 import java.util.*
+
 
 class SettingsActivity: AppCompatActivity() {
 
@@ -67,5 +71,10 @@ class SettingsActivity: AppCompatActivity() {
         pref.n2 = edit2.text.toString()
         pref.isTTSon = switchTTS.isChecked
         pref.lang = findViewById<RadioButton>(rg.checkedRadioButtonId).hint.toString()
+    }
+
+    override fun onBackPressed() {
+        NavUtils.navigateUpFromSameTask(this)
+        super.onBackPressed()
     }
 }
