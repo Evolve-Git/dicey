@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CompoundButton
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -26,6 +27,7 @@ class SettingsActivity: AppCompatActivity() {
     private lateinit var edit2: TextInputEditText
     private lateinit var switchTTS: SwitchCompat
     private lateinit var rg: RadioGroup
+    private lateinit var cg: ChipGroup
     private lateinit var pref: Prefs
 
     override fun attachBaseContext(base: Context) {
@@ -47,7 +49,7 @@ class SettingsActivity: AppCompatActivity() {
         val b1: Button = findViewById(R.id.button1)
         val b2: Button = findViewById(R.id.button2)
         rg = findViewById(R.id.rg)
-        val cg: ChipGroup = findViewById(R.id.cg)
+        cg = findViewById(R.id.cg)
         pref = Prefs(this)
 
         edit1.setText(pref.name1)
@@ -69,15 +71,20 @@ class SettingsActivity: AppCompatActivity() {
             else -> rg.check(R.id.rb1)
         }
 
-        val aSets = pref.anims
         val aNames = resources.getStringArray(R.array.anims)
         aChips = mutableListOf()
 
         for (i in aNames.indices){
-            aChips.add(this.layoutInflater.inflate(R.layout.chip, null, false) as Chip)
+            aChips.add(this.layoutInflater.inflate(R.layout.chip, cg, false) as Chip)
             aChips[i].text = aNames[i]
             aChips[i].id = ViewCompat.generateViewId()
-            aChips[i].isChecked = aSets.getOrElse(i) { false }
+            aChips[i].isChecked = pref.anims[i]
+            aChips[i].setOnCheckedChangeListener{ compoundButton, b ->
+                if (b) {
+                    aChips[i].isChecked = b
+                    solveTheChipCrisis(compoundButton)
+                }
+            }
 
             cg.addView(aChips[i])
         }
@@ -97,11 +104,18 @@ class SettingsActivity: AppCompatActivity() {
         super.onBackPressed()
     }
 
-    fun getChipsValues(): BooleanArray{
-        var temp = BooleanArray(aChips.size)
+    private fun getChipsValues(): BooleanArray{
+        val temp = BooleanArray(aChips.size)
         for (i in aChips.indices){
             temp[i] = aChips[i].isChecked
         }
         return temp
+    }
+
+    private fun solveTheChipCrisis(compoundButton: CompoundButton) {
+        when (compoundButton.id) {
+            aChips[0].id -> for (i in (1 until aChips.size)) aChips[i].isChecked = false
+            else -> aChips[0].isChecked = false
+        }
     }
 }

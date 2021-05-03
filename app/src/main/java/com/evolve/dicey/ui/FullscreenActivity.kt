@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.evolve.dicey.R
 import com.evolve.dicey.logic.Dicey
-import com.evolve.dicey.logic.RANDOM
 import com.evolve.dicey.logic.setLocale
 import kotlinx.coroutines.*
 import java.util.*
@@ -49,10 +48,10 @@ class FullscreenActivity : AppCompatActivity() {
                     true
                 }
 
-        fullscreenContent.setOnClickListener{
+        fullscreenContent.setOnClickListener {
             if (!busy) {
                 busy = true
-                dicey.animate(RANDOM)
+                dicey.animate()
 
                 GlobalScope.launch(Dispatchers.Main) {
                     delay(1100)

@@ -1,6 +1,6 @@
 <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
 android:propertyName="ScaleX"
-android:duration="1000"
+android:duration="500"
 android:valueFrom="1f"
 android:valueTo="0f"
 android:repeatCount="1"

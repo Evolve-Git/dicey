@@ -1,6 +1,5 @@
 package com.evolve.dicey.logic
 
-import android.R.attr.key
 import android.content.Context
 import android.content.SharedPreferences
 import com.evolve.dicey.BuildConfig
@@ -11,6 +10,8 @@ import com.google.gson.reflect.TypeToken
 
 class Prefs(context: Context){
     private val pref: SharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+    //If only SharedPreferences supported arrays
+    private val defAnims = Gson().toJson(BooleanArray(context.resources.getStringArray(R.array.anims).size) { false })
     //Can't make the getter use the context hence this stupid waste of space:
     private val temp1 = context.resources.getString(R.string.n1)
     private val temp2 = context.resources.getString(R.string.n2)
@@ -31,7 +32,7 @@ class Prefs(context: Context){
         set(value) = setArray(value)
 
    private fun getArray(): BooleanArray{
-       val json: String = pref.getString("anims", "[]").toString()
+       val json: String = pref.getString("anims", defAnims).toString()
        val type = object : TypeToken<BooleanArray>() {}.type
        return Gson().fromJson(json, type)
    }
