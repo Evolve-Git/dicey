@@ -19,14 +19,14 @@ import kotlin.random.Random
 class Dicey(private var context: Context, private val view: TextView){
     private val pref = Prefs(context)
     private val tts = TTS(context)
+    private val dicey: Array<String> = context.resources.getStringArray(R.array.dicey)
+    private lateinit var animSet: AnimatorSet
 
     private fun dice(): String{
-        setLocale(context)
-        val dicey: Array<String> = context.resources.getStringArray(R.array.dicey)
         return when (val seed = Random.nextInt(6)) {
             0, 3 -> dicey[seed]
-            1, 2 -> String.format(dicey[seed], pref.n1)
-            4, 5 -> String.format(dicey[seed], pref.n2)
+            1, 2 -> String.format(dicey[seed], pref.name1)
+            4, 5 -> String.format(dicey[seed], pref.name2)
             else -> "Error"
         }
     }
@@ -47,19 +47,19 @@ class Dicey(private var context: Context, private val view: TextView){
         else choice
 
         when (seed){
-            FADE -> fade(interpolator)
-            SHUTTER -> shutter(interpolator)
-            SLIDE -> slide(interpolator)
-            MOVE -> move((Random.nextInt(3)-1).toFloat(),
-                    (Random.nextInt(3)-1).toFloat(), interpolator)
-            ROTATE -> rotate(interpolator)
-            ROTATEX -> rotateX(interpolator)
-            STRETCH -> stretch(interpolator)
+            FADE        -> fade(interpolator)
+            SHUTTER     -> shutter(interpolator)
+            SLIDE       -> slide(interpolator)
+            MOVE        -> move((Random.nextInt(3)-1).toFloat(),
+                            (Random.nextInt(3)-1).toFloat(), interpolator)
+            ROTATE      -> rotate(interpolator)
+            ROTATEX     -> rotateX(interpolator)
+            STRETCH     -> stretch(interpolator)
 
-            TYPEWRITER -> typewriter()
+            TYPEWRITER  -> typewriter()
 
-            COLORS -> colors()
-            else -> none()
+            COLORS      -> colors()
+            else        -> none()
         }
     }
 
@@ -70,90 +70,106 @@ class Dicey(private var context: Context, private val view: TextView){
     }
 
     private fun fade(int: Interpolator){
-        val anima = AnimatorInflater.loadAnimator(context, R.animator.fade)
-        anima.interpolator = int
-        anima.setTarget(view)
-        anima.doOnRepeat {
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp)}
-        anima.start()
+        AnimatorInflater.loadAnimator(context, R.animator.fade).apply {
+            interpolator = int
+            setTarget(view)
+            doOnRepeat {
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+            start()
+        }
     }
 
     private fun shutter(int: Interpolator){
-        val anima = AnimatorInflater.loadAnimator(context, R.animator.shutter)
-        anima.interpolator = int
-        anima.setTarget(view)
-        anima.doOnRepeat {
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp) }
-        anima.start()
+        AnimatorInflater.loadAnimator(context, R.animator.shutter).apply {
+            interpolator = int
+            setTarget(view)
+            doOnRepeat {
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+            start()
+        }
     }
 
     private fun slide(int: Interpolator){
-        val anima = AnimatorInflater.loadAnimator(context, R.animator.slide)
-        anima.interpolator = int
-        anima.setTarget(view)
-        anima.doOnRepeat {
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp) }
-        anima.start()
+        AnimatorInflater.loadAnimator(context, R.animator.slide).apply {
+            interpolator = int
+            setTarget(view)
+            doOnRepeat {
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+            start()
+        }
     }
 
     private fun move(x: Float, y: Float, int: Interpolator){
-        val animax = AnimatorInflater.loadAnimator(context, R.animator.move_x) as ObjectAnimator
-        animax.interpolator = int
-        animax.target = view
-        animax.setFloatValues(0f, 2500f*x)
-        animax.doOnRepeat {
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp) }
+        val animax = (AnimatorInflater.loadAnimator(context, R.animator.move_x) as ObjectAnimator).apply {
+            interpolator = int
+            target = view
+            setFloatValues(0f, 2500f * x)
+            doOnRepeat {
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+        }
 
-        val animay = AnimatorInflater.loadAnimator(context, R.animator.move_y) as ObjectAnimator
-        animay.interpolator = int
-        animay.target = view
-        animay.setFloatValues(0f, 1000f*y)
+        val animay = (AnimatorInflater.loadAnimator(context, R.animator.move_y) as ObjectAnimator).apply {
+            interpolator = int
+            target = view
+            setFloatValues(0f, 1000f * y)
+        }
 
-        val animSet = AnimatorSet()
-        animSet.play(animax).with(animay)
-        animSet.start()
+        AnimatorSet().apply {
+            play(animax).with(animay)
+            start()
+        }
     }
 
     private fun rotate(int: Interpolator){
-        val anima = AnimatorInflater.loadAnimator(context, R.animator.rotate) as ObjectAnimator
-        anima.interpolator = int
-        anima.target = view
-        anima.doOnRepeat {
-            anima.setFloatValues(180f, 360f)
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp) }
-        anima.start()
+        (AnimatorInflater.loadAnimator(context, R.animator.rotate) as ObjectAnimator).apply {
+            interpolator = int
+            target = view
+            doOnRepeat {
+                setFloatValues(180f, 360f)
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+            start()
+        }
     }
 
     private fun rotateX(int: Interpolator){
-        val anima = AnimatorInflater.loadAnimator(context, R.animator.rotate_x)
-        anima.interpolator = int
-        anima.setTarget(view)
-        anima.doOnRepeat {
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp) }
-        anima.start()
+        AnimatorInflater.loadAnimator(context, R.animator.rotate_x).apply {
+            interpolator = int
+            setTarget(view)
+            doOnRepeat {
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+            start()
+        }
     }
 
     private fun stretch(int: Interpolator){
-        val anima = AnimatorInflater.loadAnimator(context, R.animator.stretch)
-        anima.interpolator = int
-        anima.setTarget(view)
-        anima.doOnRepeat {
-            val temp = dice()
-            view.text = temp
-            if (pref.isTTSon) tts.speak(temp) }
-        anima.start()
+        AnimatorInflater.loadAnimator(context, R.animator.stretch).apply {
+            interpolator = int
+            setTarget(view)
+            doOnRepeat {
+                val temp = dice()
+                view.text = temp
+                if (pref.isTTSon) tts.speak(temp)
+            }
+            start()
+        }
     }
 
     private fun typewriter(){
@@ -177,18 +193,20 @@ class Dicey(private var context: Context, private val view: TextView){
         view.text = temp
         if (pref.isTTSon) tts.speak(temp)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val anima = ObjectAnimator.ofArgb(view, "TextColor",
+            ObjectAnimator.ofArgb(view, "TextColor",
                     ContextCompat.getColor(context, R.color.light_blue_A200), Color.MAGENTA,
                     Color.BLUE, Color.CYAN, Color.GREEN,
-                    ContextCompat.getColor(context, R.color.light_blue_A200))
-            anima.duration = 1000
+                    ContextCompat.getColor(context, R.color.light_blue_A200)).apply {
+                duration = 1000
 
-            anima.start()
+                start()
+            }
         }
         else {
-            val anima = AnimatorInflater.loadAnimator(context, R.animator.color) as AnimatorSet
-            anima.setTarget(view)
-            anima.start()
+            (AnimatorInflater.loadAnimator(context, R.animator.color) as AnimatorSet).apply {
+                setTarget(view)
+                start()
+            }
         }
     }
 

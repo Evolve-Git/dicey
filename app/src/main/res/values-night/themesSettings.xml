@@ -26,4 +26,17 @@
         <!-- Inactive thumb color -->
         <item name="colorSwitchThumbNormal">@color/cardview_light_background</item>
     </style>
+
+    <style name="Widget.MaterialComponents.Chip.Choice" parent="Base.Widget.MaterialComponents.Chip">
+        <item name="android:checkable">true</item>
+
+        <item name="chipIconVisible">false</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="closeIconVisible">false</item>
+
+        <item name="android:textColor">@color/white</item>
+
+        <item name="chipBackgroundColor">@color/chip_color</item>
+
+    </style>
 </resources>

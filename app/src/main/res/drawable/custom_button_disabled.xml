@@ -6,7 +6,7 @@
     android:insetTop="6dp">
     <shape android:dither="true" android:shape="rectangle" android:useLevel="false" android:visible="true">
         <corners android:radius="4dp" />
-        <solid android:color="@color/material_on_primary_disabled"/>
+        <solid android:color="@color/light_blue_A200"/>
         <stroke android:width="1dp" android:color="@color/white" />
         <padding
             android:bottom="8dp"

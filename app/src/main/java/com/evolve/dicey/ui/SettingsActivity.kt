@@ -10,14 +10,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NavUtils
+import androidx.core.view.ViewCompat
 import com.evolve.dicey.R
 import com.evolve.dicey.logic.Prefs
 import com.evolve.dicey.logic.setLocale
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 
 class SettingsActivity: AppCompatActivity() {
+    private var aChips = mutableListOf<Chip>()
+    private lateinit var edit1: TextInputEditText
+    private lateinit var edit2: TextInputEditText
+    private lateinit var switchTTS: SwitchCompat
+    private lateinit var rg: RadioGroup
+    private lateinit var pref: Prefs
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(setLocale(base))
@@ -32,16 +41,17 @@ class SettingsActivity: AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val edit1: TextInputEditText = findViewById(R.id.edit1)
-        val edit2: TextInputEditText = findViewById(R.id.edit2)
-        val switchTTS: SwitchCompat = findViewById(R.id.switch1)
+        edit1 = findViewById(R.id.edit1)
+        edit2 = findViewById(R.id.edit2)
+        switchTTS = findViewById(R.id.switch1)
         val b1: Button = findViewById(R.id.button1)
         val b2: Button = findViewById(R.id.button2)
-        val rg: RadioGroup = findViewById(R.id.rg)
-        val pref = Prefs(this)
+        rg = findViewById(R.id.rg)
+        val cg: ChipGroup = findViewById(R.id.cg)
+        pref = Prefs(this)
 
-        edit1.setText(pref.n1)
-        edit2.setText(pref.n2)
+        edit1.setText(pref.name1)
+        edit2.setText(pref.name2)
 
         b1.setOnClickListener{
             edit1.setText(resources.getString(R.string.n1))
@@ -58,23 +68,40 @@ class SettingsActivity: AppCompatActivity() {
             "ru" -> rg.check(R.id.rb3)
             else -> rg.check(R.id.rb1)
         }
+
+        val aSets = pref.anims
+        val aNames = resources.getStringArray(R.array.anims)
+        aChips = mutableListOf()
+
+        for (i in aNames.indices){
+            aChips.add(this.layoutInflater.inflate(R.layout.chip, null, false) as Chip)
+            aChips[i].text = aNames[i]
+            aChips[i].id = ViewCompat.generateViewId()
+            aChips[i].isChecked = aSets.getOrElse(i) { false }
+
+            cg.addView(aChips[i])
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        val edit1: TextInputEditText = findViewById(R.id.edit1)
-        val edit2: TextInputEditText = findViewById(R.id.edit2)
-        val switchTTS: SwitchCompat = findViewById(R.id.switch1)
-        val rg: RadioGroup = findViewById(R.id.rg)
-        val pref = Prefs(this)
-        pref.n1 = edit1.text.toString()
-        pref.n2 = edit2.text.toString()
+        pref.name1 = edit1.text.toString()
+        pref.name2 = edit2.text.toString()
         pref.isTTSon = switchTTS.isChecked
         pref.lang = findViewById<RadioButton>(rg.checkedRadioButtonId).hint.toString()
+        pref.anims = getChipsValues()
     }
 
     override fun onBackPressed() {
         NavUtils.navigateUpFromSameTask(this)
         super.onBackPressed()
+    }
+
+    fun getChipsValues(): BooleanArray{
+        var temp = BooleanArray(aChips.size)
+        for (i in aChips.indices){
+            temp[i] = aChips[i].isChecked
+        }
+        return temp
     }
 }
