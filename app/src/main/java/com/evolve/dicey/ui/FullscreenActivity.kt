@@ -6,17 +6,16 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
 import com.evolve.dicey.R
+import com.evolve.dicey.databinding.ActivityFullscreenBinding
 import com.evolve.dicey.logic.Dicey
 import com.evolve.dicey.logic.setLocale
 import kotlinx.coroutines.*
 import java.util.*
 
 class FullscreenActivity : AppCompatActivity() {
-    private lateinit var fullscreenContent: TextView
     private var busy = false
     private lateinit var dicey: Dicey
 
@@ -28,14 +27,12 @@ class FullscreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_fullscreen)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        //setSupportActionBar(toolbar)
+        val activity = DataBindingUtil.setContentView<ActivityFullscreenBinding>(this,
+            R.layout.activity_fullscreen)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        fullscreenContent = findViewById(R.id.fullscreen_content)
-        dicey = Dicey(this, fullscreenContent)
+        dicey = Dicey(this, activity.diceyView)
 
-        toolbar.setOnMenuItemClickListener { item: MenuItem? ->
+        activity.toolbar.setOnMenuItemClickListener { item: MenuItem? ->
                     when (item!!.itemId) {
                         R.id.action_settings -> {
                             val intent = Intent(this@FullscreenActivity,
@@ -48,7 +45,7 @@ class FullscreenActivity : AppCompatActivity() {
                     true
                 }
 
-        fullscreenContent.setOnClickListener {
+        activity.diceyView.setOnClickListener {
             if (!busy) {
                 busy = true
                 dicey.animate()

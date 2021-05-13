@@ -1,0 +1,16 @@
+<resources>
+    <string name="welcome" translatable="false">Welcome to Dicey: the advanced solution in argument solving!</string>
+    <string name="prev" translatable="false">Previous</string>
+    <string name="next" translatable="false">Next</string>
+    <string-array name="greetings">
+        <item>Good %1$s! It`s time to know the truth!</item>
+        <item>This %1$s we solve the argument in a civilized manner.</item>
+        <item>What a %1$s for a conflict!</item>
+        <item>It is the %1$s we argue!</item>
+        <item>Ooh, i just came up with a great counterargument!</item>
+        <item>You want to know who`s right? I`ll show you who`s right!</item>
+        <item>Wait, you guys still argue about that!?</item>
+        <item>Let`s solve this once and for all!</item>
+        <item>What do you mean you disagree!?</item>
+    </string-array>
+</resources>

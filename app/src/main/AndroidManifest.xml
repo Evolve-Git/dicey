@@ -15,12 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dicey">
+
         <activity
             android:name=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Dicey.Fullscreen"
-            android:screenOrientation= "sensorLandscape">
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dicey.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,12 +30,11 @@
         </activity>
         <activity
             android:name=".ui.SettingsActivity"
-            android:parentActivityName=".ui.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Dicey.Fullscreen"
-            android:screenOrientation= "sensorLandscape">
-        </activity>
+            android:parentActivityName=".ui.FullscreenActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/Theme.Dicey.Fullscreen"/>
     </application>
 
 </manifest>

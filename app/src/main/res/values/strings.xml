@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Dicey</string>
-    <string name="n1" translatable="false">Igor</string>
-    <string name="n2" translatable="false">Thijs</string>
+    <string name="name1" translatable="false">Igor</string>
+    <string name="name2" translatable="false">Thijs</string>
     <string name="en" translatable="false">en</string>>
     <string name="nl" translatable="false">nl</string>>
     <string name="ru" translatable="false">ru</string>>
@@ -19,8 +19,7 @@
     <string name="lang_ru">Russian</string>
     <string name="anim">Animations</string>
 
-    <string-array
-        name="anims">
+    <string-array name="anims">
         <item name="random" translatable="false">Random</item>
         <item name="fade" translatable="false">Fade</item>
         <item name="shutter" translatable="false">Shutter</item>
@@ -33,8 +32,7 @@
         <item name="colors" translatable="false">Colors</item>
     </string-array>
 
-    <string-array
-        name="dicey">
+    <string-array name="dicey">
         <item>There is no God.</item>
         <item>%1$s is really right!</item>
         <item>%1$s is a little bit right&#8230;</item>

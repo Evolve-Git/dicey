@@ -7,6 +7,6 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/setts"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/settings_box"
         app:showAsAction="always"/>
 </menu>

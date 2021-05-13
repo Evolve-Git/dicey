@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/greeter_nav"
+    app:startDestination="@id/greeterFragment">
+
+    <fragment
+        android:id="@+id/greeterFragment"
+        android:name="com.evolve.dicey.ui.GreeterFragment"
+        android:label="greeter_fragment"
+        tools:layout="@layout/fragment_greeter" >
+        <action
+            android:id="@+id/action_greeterFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@+id/greeterFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.evolve.dicey.ui.WelcomeFragment"
+        android:label="welcome_fragment"
+        tools:layout="@layout/fragment_welcome">
+    </fragment>
+</navigation>

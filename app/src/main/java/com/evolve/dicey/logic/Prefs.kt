@@ -13,8 +13,8 @@ class Prefs(context: Context){
     //If only SharedPreferences supported arrays
     private val defAnims = Gson().toJson(BooleanArray(context.resources.getStringArray(R.array.anims).size) { false })
     //Can't make the getter use the context hence this stupid waste of space:
-    private val temp1 = context.resources.getString(R.string.n1)
-    private val temp2 = context.resources.getString(R.string.n2)
+    private val temp1 = context.resources.getString(R.string.name1)
+    private val temp2 = context.resources.getString(R.string.name2)
     var isTTSon: Boolean
         get() = pref.getBoolean("tts", true)
         set(value) = pref.edit().putBoolean("tts", value).apply()

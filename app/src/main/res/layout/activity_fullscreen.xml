@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/light_blue_600"
-    android:theme="@style/ThemeOverlay.Dicey.FullscreenContainer"
-    tools:context="ui.FullscreenActivity">
-
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="8sp"
-        android:layout_marginEnd="8sp"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:maxLines="1"
-        android:shadowColor="@color/light_blue_900"
-        android:shadowDx="5"
-        android:shadowDy="5"
-        android:shadowRadius="1"
-        android:text="@string/main"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="?attr/fullscreenTextColor"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:autoSizeMaxTextSize="50sp"
-        app:autoSizeMinTextSize="20sp"
-        app:autoSizeStepGranularity="1sp"
-        app:autoSizeTextType="uniform" />
+        android:background="@color/light_blue_600"
+        android:theme="@style/ThemeOverlay.Dicey.FullscreenContainer"
+        tools:context="ui.FullscreenActivity">
 
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:menu="@menu/menu" />
+        <!-- The primary full-screen view. This can be replaced with whatever view
+             is needed to present your content, e.g. VideoView, SurfaceView,
+             TextureView, etc. -->
+        <TextView
+            android:id="@+id/dicey_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8sp"
+            android:layout_marginEnd="8sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:maxLines="1"
+            android:shadowColor="@color/light_blue_900"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
+            android:text="@string/main"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?attr/fullscreenTextColor"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:typeface="normal"
+            app:autoSizeMaxTextSize="50sp"
+            app:autoSizeMinTextSize="20sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform" />
 
-</FrameLayout>
+        <!-- This FrameLayout insets its children based on system windows using
+             android:fitsSystemWindows. -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:menu="@menu/menu" />
+
+    </FrameLayout>
+</layout>
