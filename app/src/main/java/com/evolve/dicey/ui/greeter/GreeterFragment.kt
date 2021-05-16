@@ -1,4 +1,4 @@
-package com.evolve.dicey.ui
+package com.evolve.dicey.ui.greeter
 
 import android.os.Bundle
 import android.view.LayoutInflater

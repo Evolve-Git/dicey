@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:background="@color/light_blue_600"
         android:theme="@style/ThemeOverlay.Dicey.FullscreenContainer"
-        tools:context="ui.FullscreenActivity">
+        tools:context=".ui.main.FullscreenActivity">
 
         <!-- The primary full-screen view. This can be replaced with whatever view
              is needed to present your content, e.g. VideoView, SurfaceView,

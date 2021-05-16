@@ -1,0 +1,31 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SettingsTTSFragment"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_anims"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/anim"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/anims_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorOnPrimary"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            app:chipSpacingHorizontal="16dp" />
+
+    </LinearLayout>
+</layout>

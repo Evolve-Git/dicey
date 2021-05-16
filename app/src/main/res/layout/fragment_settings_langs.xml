@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SettingsLangsFragment"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_lang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="@string/lang"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/white" />
+
+        <RadioGroup
+            android:id="@+id/lang_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorOnPrimary"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/lang1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_radiobutton"
+                android:button="@null"
+                app:buttonCompat="@null"
+                android:hint="@string/en"
+                android:text="@string/lang_en"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/lang2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_radiobutton"
+                android:button="@null"
+                app:buttonCompat="@null"
+                android:hint="@string/nl"
+                android:text="@string/lang_nl"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/lang3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_radiobutton"
+                android:button="@null"
+                app:buttonCompat="@null"
+                android:hint="@string/ru"
+                android:text="@string/lang_ru"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/white" />
+        </RadioGroup>
+
+    </LinearLayout>
+</layout>

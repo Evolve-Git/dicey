@@ -1,8 +1,9 @@
-package com.evolve.dicey.ui
+package com.evolve.dicey.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,10 @@ import com.evolve.dicey.databinding.ActivityFullscreenBinding
 import com.evolve.dicey.logic.Dicey
 import com.evolve.dicey.logic.HideSystemUI
 import com.evolve.dicey.logic.setLocale
+import com.evolve.dicey.ui.settings.SettingsActivity
 import kotlinx.coroutines.*
 import java.util.*
+
 
 class FullscreenActivity : AppCompatActivity() {
     private var busy = false

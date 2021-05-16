@@ -1,4 +1,4 @@
-package com.evolve.dicey.ui
+package com.evolve.dicey.ui.greeter
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentWelcomeBinding
+import com.evolve.dicey.ui.main.FullscreenActivity
 
 class WelcomeFragment : Fragment() {
 

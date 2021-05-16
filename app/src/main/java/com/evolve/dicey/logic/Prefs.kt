@@ -15,15 +15,16 @@ class Prefs(context: Context){
     //Can't make the getter use the context hence this stupid waste of space:
     private val temp1 = context.resources.getString(R.string.name1)
     private val temp2 = context.resources.getString(R.string.name2)
-    var isTTSon: Boolean
-        get() = pref.getBoolean("tts", true)
-        set(value) = pref.edit().putBoolean("tts", value).apply()
+
     var name1: String
         get() = pref.getString("name1", temp1).toString()
         set(value) = pref.edit().putString("name1", value).apply()
     var name2: String
         get() = pref.getString("name2", temp2).toString()
         set(value) = pref.edit().putString("name2", value).apply()
+    var isTTSon: Boolean
+        get() = pref.getBoolean("tts", true)
+        set(value) = pref.edit().putBoolean("tts", value).apply()
     var lang: String
         get() = pref.getString("lang", "en").toString()
         set(value) = pref.edit().putString("lang", value).apply()
