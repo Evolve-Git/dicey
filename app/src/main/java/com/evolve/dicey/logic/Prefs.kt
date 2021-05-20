@@ -16,6 +16,9 @@ class Prefs(context: Context){
     private val temp1 = context.resources.getString(R.string.name1)
     private val temp2 = context.resources.getString(R.string.name2)
 
+    var skipTutorial: Boolean
+        get() = pref.getBoolean("skipTutorial", false)
+        set(value) = pref.edit().putBoolean("skipTutorial", value).apply()
     var name1: String
         get() = pref.getString("name1", temp1).toString()
         set(value) = pref.edit().putString("name1", value).apply()
@@ -28,9 +31,14 @@ class Prefs(context: Context){
     var lang: String
         get() = pref.getString("lang", "en").toString()
         set(value) = pref.edit().putString("lang", value).apply()
-    var anims: BooleanArray
-        get() = getArray()
-        set(value) = setArray(value)
+    var anims: BooleanArray = getArray()
+        //get() = getArray()
+        set(value) {
+            field = value
+            setArray(value)
+        }
+
+    //TODO find out why pref is getting recreated on every call
 
    private fun getArray(): BooleanArray{
        val json: String = pref.getString("anims", defAnims).toString()

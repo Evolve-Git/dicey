@@ -3,10 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="SettingsViewModel"
+            type="com.evolve.dicey.logic.SettingsViewModel"
+            />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SettingsTTSFragment"
+        tools:context=".SettingsTtsFragment"
         android:orientation="vertical">
 
         <TextView
@@ -24,14 +30,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorOnPrimary"
+            android:checked="@={SettingsViewModel.pref.TTSon}"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@color/white"
             android:textOff="@string/off"
+
             android:textOn="@string/on"
             android:thumb="@drawable/custom_thumb"
-
             app:showText="true"
             app:splitTrack="false"
             app:switchPadding="4dp"

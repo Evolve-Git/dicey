@@ -1,7 +1,18 @@
 <resources>
-    <string name="welcome" translatable="false">Welcome to Dicey: the advanced solution in argument solving!</string>
+    <string name="welcome" translatable="false">
+        Welcome to Dicey: the advanced solution in argument solving!
+    </string>
+    <string name="welcome_names" translatable="false">
+        First let`s fill your and your debate opponent`s names in.
+        You can change them later through settings.
+    </string>
+    <string name="tutorial_1" translatable="false">Tap the cog to get to the settings screen. &#8594; </string>
+    <string name="tutorial_2" translatable="false">Tap anywhere to determine who`s right. </string>
+
     <string name="prev" translatable="false">Previous</string>
     <string name="next" translatable="false">Next</string>
+    <string name="finish" translatable="false">Finish</string>
+
     <string-array name="greetings">
         <item>Good %1$s! It`s time to know the truth!</item>
         <item>This %1$s we solve the argument in a civilized manner.</item>

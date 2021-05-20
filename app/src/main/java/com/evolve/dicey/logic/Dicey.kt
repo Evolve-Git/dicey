@@ -1,6 +1,7 @@
 package com.evolve.dicey.logic
 
 import android.animation.*
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
@@ -8,7 +9,7 @@ import android.view.animation.*
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.evolve.dicey.R
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -62,18 +63,18 @@ class Dicey(private var context: Context, private val view: TextView){
         val temp = dice()
         if (tw) {
             val delta = 1000/ temp.length
-            if (pref.isTTSon) GlobalScope.launch(Dispatchers.Main) {
+            if (pref.isTTSon) GlobalScope.launch(Main) {
                 delay(500)
                 tts.speak(temp)
             }
             for (i in 0..temp.length) {
-                GlobalScope.launch(Dispatchers.Main) {
+                GlobalScope.launch(Main) {
                     delay((delta * i).toLong())
                     view.text = temp.subSequence(0, i)
                 }
             }
         } else
-        GlobalScope.launch(Dispatchers.Main) {
+        GlobalScope.launch(Main) {
             delay(500)
             view.text = temp
             if (pref.isTTSon) tts.speak(temp)
@@ -102,6 +103,7 @@ class Dicey(private var context: Context, private val view: TextView){
         return AnimatorSet().apply { playTogether(animsListFinal) }
     }
 
+    @SuppressLint("Recycle")
     private fun initAnimColorSet(): AnimatorSet{
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             AnimatorSet().apply { play(ObjectAnimator.ofArgb(view, "TextColor",

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentSettingsLangsBinding
 import com.evolve.dicey.logic.SettingsViewModel
@@ -15,12 +15,7 @@ import java.util.*
 
 class SettingsLangsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsLangsBinding
-    private lateinit var viewModel: SettingsViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(SettingsViewModel::class.java)
-    }
+    private val viewModel: SettingsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

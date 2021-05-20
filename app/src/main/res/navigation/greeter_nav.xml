@@ -14,12 +14,43 @@
             android:id="@+id/action_greeterFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
             app:popUpTo="@+id/greeterFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.evolve.dicey.ui.greeter.WelcomeFragment"
         android:label="welcome_fragment"
         tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_welcomeNamesFragment"
+            app:destination="@id/welcomeNamesFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
     </fragment>
+    <fragment
+        android:id="@+id/welcomeNamesFragment"
+        android:name="com.evolve.dicey.ui.greeter.WelcomeNamesFragment"
+        android:label="WelcomeNamesFragment" >
+        <action
+            android:id="@+id/action_welcomeNamesFragment_to_tutorialFragment"
+            app:destination="@id/tutorialFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/tutorialFragment"
+        android:name="com.evolve.dicey.ui.greeter.TutorialFragment"
+        android:label="TutorialFragment"
+        app:enterAnim="@anim/fade_in"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/fade_out"/>
 </navigation>

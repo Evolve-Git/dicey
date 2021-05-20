@@ -6,19 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentSettingsTtsBinding
 import com.evolve.dicey.logic.SettingsViewModel
 
-class SettingsTTSFragment : Fragment() {
+class SettingsTtsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsTtsBinding
-    private lateinit var viewModel: SettingsViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(SettingsViewModel::class.java)
-    }
+    private val viewModel: SettingsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,12 +21,8 @@ class SettingsTTSFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_settings_tts,container,false)
-        binding.ttsSwitch.isChecked = viewModel.pref.isTTSon
-        return binding.root
-    }
+        binding.settingsViewModel = viewModel
 
-    override fun onPause() {
-        super.onPause()
-        viewModel.pref.isTTSon = binding.ttsSwitch.isChecked
+        return binding.root
     }
 }

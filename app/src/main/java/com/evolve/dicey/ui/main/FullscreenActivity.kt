@@ -3,7 +3,6 @@ package com.evolve.dicey.ui.main
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ import com.evolve.dicey.logic.HideSystemUI
 import com.evolve.dicey.logic.setLocale
 import com.evolve.dicey.ui.settings.SettingsActivity
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.Main
 import java.util.*
 
 
@@ -53,7 +53,7 @@ class FullscreenActivity : AppCompatActivity() {
                 busy = true
                 dicey.animate()
 
-                GlobalScope.launch(Dispatchers.Main) {
+                GlobalScope.launch(Main) {
                     delay(1100)
                     busy = false
                 }
@@ -89,5 +89,15 @@ class FullscreenActivity : AppCompatActivity() {
         super.onPostCreate(savedInstanceState)
 
         HideSystemUI()
+    }
+
+    override fun onStart(){
+        super.onStart()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

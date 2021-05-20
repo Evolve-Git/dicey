@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,11 +33,10 @@
                 android:layout_weight="1"
                 android:background="@drawable/custom_radiobutton"
                 android:button="@null"
-                app:buttonCompat="@null"
-                android:hint="@string/en"
                 android:text="@string/lang_en"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                app:buttonCompat="@null" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/lang2"
@@ -46,7 +46,6 @@
                 android:background="@drawable/custom_radiobutton"
                 android:button="@null"
                 app:buttonCompat="@null"
-                android:hint="@string/nl"
                 android:text="@string/lang_nl"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />
@@ -59,7 +58,6 @@
                 android:background="@drawable/custom_radiobutton"
                 android:button="@null"
                 app:buttonCompat="@null"
-                android:hint="@string/ru"
                 android:text="@string/lang_ru"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white" />

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentSettingsAnimsBinding
 import com.evolve.dicey.logic.SettingsViewModel
@@ -16,13 +16,8 @@ import com.google.android.material.chip.Chip
 
 class SettingsAnimsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsAnimsBinding
-    private lateinit var viewModel: SettingsViewModel
+    private val viewModel: SettingsViewModel by activityViewModels()
     private var aChips = mutableListOf<Chip>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(SettingsViewModel::class.java)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +25,7 @@ class SettingsAnimsFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_settings_anims,container,false)
+
         val aNames = resources.getStringArray(R.array.anims)
         aChips = mutableListOf()
 

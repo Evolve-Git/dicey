@@ -39,29 +39,33 @@
                     android:id="@+id/fragmentContainerView"
                     android:name="com.evolve.dicey.ui.settings.SettingsNamesFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:layout="@layout/fragment_settings_names" />
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/fragmentContainerView2"
-                    android:name="com.evolve.dicey.ui.settings.SettingsTTSFragment"
+                    android:name="com.evolve.dicey.ui.settings.SettingsTtsFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:layout="@layout/fragment_settings_tts" />
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/fragmentContainerView3"
                     android:name="com.evolve.dicey.ui.settings.SettingsLangsFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:layout="@layout/fragment_settings_langs" />
 
                 <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/fragmentContainerView4"
                     android:name="com.evolve.dicey.ui.settings.SettingsAnimsFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:layout="@layout/fragment_settings_anims" />
 
             </LinearLayout>
         </ScrollView>

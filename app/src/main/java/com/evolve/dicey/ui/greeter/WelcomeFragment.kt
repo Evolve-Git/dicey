@@ -1,15 +1,14 @@
 package com.evolve.dicey.ui.greeter
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentWelcomeBinding
-import com.evolve.dicey.ui.main.FullscreenActivity
 
 class WelcomeFragment : Fragment() {
 
@@ -19,12 +18,8 @@ class WelcomeFragment : Fragment() {
     ): View {
         val binding = DataBindingUtil.inflate<FragmentWelcomeBinding>(inflater,
             R.layout.fragment_welcome,container,false)
-        binding.buttonNext.setOnClickListener{
-            val intent = Intent(activity,
-                FullscreenActivity::class.java)
-            //Prevents creation of multiple instances of the Activity.
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
+        binding.buttonWelcomeNext.setOnClickListener{
+            view?.findNavController()?.navigate(R.id.action_welcomeFragment_to_welcomeNamesFragment)
         }
         return binding.root
     }

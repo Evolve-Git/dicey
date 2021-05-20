@@ -9,9 +9,6 @@
         android:theme="@style/ThemeOverlay.Dicey.FullscreenContainer"
         tools:context=".ui.main.FullscreenActivity">
 
-        <!-- The primary full-screen view. This can be replaced with whatever view
-             is needed to present your content, e.g. VideoView, SurfaceView,
-             TextureView, etc. -->
         <TextView
             android:id="@+id/dicey_view"
             android:layout_width="match_parent"
@@ -28,7 +25,7 @@
             android:shadowRadius="1"
             android:text="@string/main"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textColor="?attr/fullscreenTextColor"
+            android:textColor="@color/light_blue_A200"
             android:textSize="30sp"
             android:textStyle="bold"
             android:typeface="normal"
@@ -37,8 +34,6 @@
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform" />
 
-        <!-- This FrameLayout insets its children based on system windows using
-             android:fitsSystemWindows. -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"

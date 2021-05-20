@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="SettingsViewModel"
+            type="com.evolve.dicey.logic.SettingsViewModel"
+            />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +44,7 @@
                     android:background="?attr/colorOnPrimary"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:text="@string/name1"
+                    android:text="@={SettingsViewModel.pref.name1}"
                     android:textSize="20sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -78,7 +84,7 @@
                     android:background="?attr/colorOnPrimary"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:text="@string/name2"
+                    android:text="@={SettingsViewModel.pref.name2}"
                     android:textSize="20sp" />
 
             </com.google.android.material.textfield.TextInputLayout>

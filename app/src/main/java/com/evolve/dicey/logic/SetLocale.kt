@@ -7,7 +7,6 @@ import java.util.*
 fun setLocale(context: Context): Context {
 
     val pref = Prefs(context)
-    pref.versionCheck()
 
     val savedLocale = Locale(pref.lang)
     Locale.setDefault(savedLocale)

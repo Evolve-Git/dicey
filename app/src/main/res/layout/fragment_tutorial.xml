@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TutorialFragment"
+        android:background="@color/light_blue_600">
+
+        <TextView
+            android:id="@+id/tutorial_dicey_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="8sp"
+            android:layout_marginEnd="8sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:maxLines="1"
+            android:shadowColor="@color/light_blue_900"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
+            android:text="@string/main"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="@color/light_blue_A200"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/textTutorial_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|right|top"
+            android:background="@drawable/custom_greeter_text_bg"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:padding="12dp"
+            android:shadowColor="@color/light_blue_900"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
+            android:text="@string/tutorial_1"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/light_blue_A200"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableRightCompat="@drawable/settings_box"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/textTutorial_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/custom_greeter_text_bg"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:padding="15dp"
+            android:shadowColor="@color/light_blue_900"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
+            android:text="@string/tutorial_2"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/light_blue_A200"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded" />
+
+        <Button
+            android:id="@+id/buttonTutorialPrev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_button"
+            android:text="@string/prev"
+            app:backgroundTint="@null"
+            tools:ignore="RtlHardcoded" />
+
+        <Button
+            android:id="@+id/buttonTutorialNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custom_button"
+            android:text="@string/finish"
+            app:backgroundTint="@null"
+            tools:ignore="RtlHardcoded" />
+
+    </FrameLayout>
+</layout>
