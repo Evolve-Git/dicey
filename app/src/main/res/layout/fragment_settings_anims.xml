@@ -23,9 +23,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/colorOnPrimary"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            app:chipSpacingHorizontal="16dp" />
+            android:paddingLeft="4dp"
+            android:paddingRight="20dp"
+            app:chipSpacingHorizontal="16dp"
+            tools:ignore="RtlHardcoded" />
 
     </LinearLayout>
 </layout>

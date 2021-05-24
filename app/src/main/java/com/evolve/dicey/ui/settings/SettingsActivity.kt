@@ -9,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.ActivitySettingsBinding
-import com.evolve.dicey.logic.HideSystemUI
+import com.evolve.dicey.logic.hideSystemUI
 import com.evolve.dicey.logic.SettingsViewModel
 import com.evolve.dicey.logic.setLocale
 
@@ -42,22 +42,24 @@ class SettingsActivity: AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        HideSystemUI()
+        hideSystemUI()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        HideSystemUI()
+        hideSystemUI()
     }
 
     override fun onStart(){
         super.onStart()
+
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     override fun finish() {
         super.finish()
+
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

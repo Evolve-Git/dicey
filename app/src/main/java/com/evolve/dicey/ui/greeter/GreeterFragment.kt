@@ -13,7 +13,8 @@ import androidx.navigation.findNavController
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentGreeterBinding
 import com.evolve.dicey.logic.SettingsViewModel
-import com.evolve.dicey.logic.getGreeterData
+import com.evolve.dicey.logic.getGreeterImage
+import com.evolve.dicey.logic.getGreeterString
 import com.evolve.dicey.ui.main.FullscreenActivity
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
@@ -40,9 +41,8 @@ class GreeterFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentGreeterBinding>(inflater,
             R.layout.fragment_greeter,container,false)
         binding.greeterImage.background = ResourcesCompat.getDrawable(requireActivity().resources,
-            getGreeterData().image, null)
-        val greetings = resources.getStringArray(R.array.greetings)
-        binding.greeterText.text = String.format(greetings.random(), getGreeterData().greeting)
+            getGreeterImage(), null)
+        binding.greeterText.text = getGreeterString()
 
         return binding.root
     }

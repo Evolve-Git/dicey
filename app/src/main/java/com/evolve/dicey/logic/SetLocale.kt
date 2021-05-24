@@ -2,7 +2,7 @@ package com.evolve.dicey.logic
 
 import android.content.Context
 import android.content.res.Configuration
-import java.util.*
+import java.util.Locale
 
 fun setLocale(context: Context): Context {
 

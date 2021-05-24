@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.ActivityGreeterBinding
-import com.evolve.dicey.logic.HideSystemUI
+import com.evolve.dicey.logic.hideSystemUI
 import com.evolve.dicey.logic.setLocale
 
 class GreeterActivity : AppCompatActivity() {
@@ -23,13 +23,13 @@ class GreeterActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        HideSystemUI()
+        hideSystemUI()
     }
 
     override fun onResume() {
         super.onResume()
 
-        HideSystemUI()
+        hideSystemUI()
     }
 
     override fun onStart(){

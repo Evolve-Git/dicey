@@ -34,15 +34,16 @@ class SettingsAnimsFragment : Fragment() {
             aChips[i].text = aNames[i]
             aChips[i].id = ViewCompat.generateViewId()
             aChips[i].isChecked = viewModel.pref.anims[i]
-            aChips[i].setOnCheckedChangeListener{ compoundButton, b ->
-                if (b) {
-                    aChips[i].isChecked = b
+            aChips[i].setOnCheckedChangeListener{ compoundButton, checked ->
+                if (checked) {
+                    aChips[i].isChecked = checked
                     uncheckChips(compoundButton)
                 }
             }
 
             binding.animsGroup.addView(aChips[i])
         }
+
         return binding.root
     }
 

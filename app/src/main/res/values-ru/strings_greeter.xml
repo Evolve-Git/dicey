@@ -1,0 +1,55 @@
+<resources>
+    <string name="welcome">
+        Добро пожаловать в Дайси: последнее слово в вашем споре!
+    </string>
+    <string name="welcome_names">
+        Для начала введём имена вас и вашего оппонента.
+        Вы можете изменить их позже через настройки.
+    </string>
+    <string name="tutorial_1">Жмите шестерёнку для вызова меню настроек. &#8594; </string>
+    <string name="tutorial_2">Коснитесь в любом месте экрана, чтобы узнать кто прав. </string>
+
+    <string name="prev">Назад</string>
+    <string name="next">Дальше</string>
+    <string name="finish">Завершить</string>
+
+    <string-array name="time_of_day">
+        <item>утро</item>
+        <item>день</item>
+        <item>вечер</item>
+        <item>ночь</item>
+    </string-array>
+
+    <string-array name="good_time_of_day">
+        <item>Доброе утро</item>
+        <item>Добрый день</item>
+        <item>Добрый вечер</item>
+        <item>Доброй ночи</item>
+    </string-array>
+
+    <string-array name="this_time_of_day">
+        <item>Этим утром</item>
+        <item>Этим днём</item>
+        <item>Этим вечером</item>
+        <item>Этой ночью</item>
+    </string-array>
+
+    <string-array name="it_is_time_of_day">
+        <item>В это утро</item>
+        <item>В этот день</item>
+        <item>В этот вечер</item>
+        <item>В эту ночь</item>
+    </string-array>
+
+    <string-array name="greetings">
+        <item>%1$s! Время узнать правду!</item>
+        <item>%2$s мы решим спор как цивилизованные люди.</item>
+        <item>Что за %3$s для конфликта!</item>
+        <item>%4$s мы спорим!</item>
+        <item>О! Мне только что пришёл в голову отличный контраргумент!</item>
+        <item>Вы хотите узнать кто прав? Я покажу вам кто прав!</item>
+        <item>Стоп, вы всё ещё спорите об этом!?</item>
+        <item>Давайте решим этот спор раз и навсегда!</item>
+        <item>Что значит вы не согласны!?</item>
+    </string-array>
+</resources>

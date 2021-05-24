@@ -24,10 +24,10 @@
         <item name="fade" translatable="false">Fade</item>
         <item name="shutter" translatable="false">Shutter</item>
         <item name="slide" translatable="false">Slide</item>
-        <item name="moveX" translatable="false">Move</item>
-        <item name="moveY" translatable="false">Move</item>
+        <item name="moveX" translatable="false">Move X</item>
+        <item name="moveY" translatable="false">Move Y</item>
         <item name="rotate" translatable="false">Rotate</item>
-        <item name="rotatex" translatable="false">RotateX</item>
+        <item name="rotatex" translatable="false">Rotate X</item>
         <item name="typewriter" translatable="false">Typewriter</item>
         <item name="colors" translatable="false">Colors</item>
     </string-array>

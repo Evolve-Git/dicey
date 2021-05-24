@@ -11,7 +11,7 @@ import androidx.fragment.app.activityViewModels
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.FragmentSettingsLangsBinding
 import com.evolve.dicey.logic.SettingsViewModel
-import java.util.*
+import java.util.Locale
 
 class SettingsLangsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsLangsBinding
@@ -28,6 +28,7 @@ class SettingsLangsFragment : Fragment() {
             "ru" -> binding.langGroup.check(R.id.lang3)
             else -> binding.langGroup.check(R.id.lang1)
         }
+
         return binding.root
     }
 

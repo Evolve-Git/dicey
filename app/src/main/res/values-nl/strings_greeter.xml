@@ -1,0 +1,55 @@
+<resources>
+    <string name="welcome">
+        Welkom bij Dicey: het laatste woord in uw betoog!
+    </string>
+    <string name="welcome_names">
+        First let`s fill your and your debate opponent`s names in.
+        You can change them later through settings.
+    </string>
+    <string name="tutorial_1">Tik op het tandwiel om het optiescherm te openen. &#8594; </string>
+    <string name="tutorial_2">Tik ergens om te bepalen wie gelijk heeft. </string>
+
+    <string name="prev">Vorige</string>
+    <string name="next">Volgende</string>
+    <string name="finish">Finish</string>
+
+    <string-array name="time_of_day">
+        <item>ochtend</item>
+        <item>dag</item>
+        <item>avond</item>
+        <item>nacht</item>
+    </string-array>
+
+    <string-array name="good_time_of_day">
+        <item>ochtend</item>
+        <item>dag</item>
+        <item>avond</item>
+        <item>nacht</item>
+    </string-array>
+
+    <string-array name="this_time_of_day">
+        <item>ochtend</item>
+        <item>dag</item>
+        <item>avond</item>
+        <item>nacht</item>
+    </string-array>
+
+    <string-array name="it_is_time_of_day">
+        <item>ochtend</item>
+        <item>dag</item>
+        <item>avond</item>
+        <item>nacht</item>
+    </string-array>
+
+    <string-array name="greetings">
+        <item>Goed %1$s!, de tijd is daar voor de waarheid!</item>
+        <item>Deze %1$s zullen wij de discussie op een beschaafde manier beslechten</item>
+        <item>Wat een %1$s voor een conflict!</item>
+        <item>Het is de %1$s dat wij discussieren!</item>
+        <item>Ooh, zojuist schoot mij het tegenargument te binnen!</item>
+        <item>Jij wil weten wie gelijkt heeft. Ik zal je laten zien wie gelijkt heeft!</item>
+        <item>Wacht, jullie discussiëren daarover?</item>
+        <item>Laten wij die beslechten, voor nu en altijd!</item>
+        <item>Hoe bedoel je, je bent het er niet mee eens?</item>
+    </string-array>
+</resources>

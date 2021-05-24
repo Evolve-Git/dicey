@@ -4,23 +4,25 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.evolve.dicey.R
 import com.evolve.dicey.databinding.ActivityFullscreenBinding
+import com.evolve.dicey.logic.AnimsManager
 import com.evolve.dicey.logic.Dicey
-import com.evolve.dicey.logic.HideSystemUI
+import com.evolve.dicey.logic.hideSystemUI
 import com.evolve.dicey.logic.setLocale
 import com.evolve.dicey.ui.settings.SettingsActivity
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
-import java.util.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class FullscreenActivity : AppCompatActivity() {
     private var busy = false
-    private lateinit var dicey: Dicey
+    private lateinit var animsManager: AnimsManager
 
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(setLocale(base))
@@ -33,7 +35,9 @@ class FullscreenActivity : AppCompatActivity() {
         val activity = DataBindingUtil.setContentView<ActivityFullscreenBinding>(this,
             R.layout.activity_fullscreen)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        dicey = Dicey(this, activity.diceyView)
+        animsManager = AnimsManager(this)
+        val dicey = Dicey(this)
+
 
         activity.toolbar.setOnMenuItemClickListener { item: MenuItem? ->
                     when (item!!.itemId) {
@@ -51,9 +55,9 @@ class FullscreenActivity : AppCompatActivity() {
         activity.diceyView.setOnClickListener {
             if (!busy) {
                 busy = true
-                dicey.animate()
+                animsManager.animate(activity.diceyView, dicey.dice())
 
-                GlobalScope.launch(Main) {
+                CoroutineScope(Main).launch {
                     delay(1100)
                     busy = false
                 }
@@ -76,28 +80,30 @@ class FullscreenActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        HideSystemUI()
+        hideSystemUI()
     }
 
     public override fun onDestroy() {
         super.onDestroy()
 
-        dicey.killTTS()
+        animsManager.killTTS()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        HideSystemUI()
+        hideSystemUI()
     }
 
     override fun onStart(){
         super.onStart()
+
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     override fun finish() {
         super.finish()
+
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

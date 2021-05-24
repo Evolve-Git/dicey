@@ -3,7 +3,7 @@ package com.evolve.dicey.logic
 import android.content.Context
 import android.os.Build
 import android.speech.tts.TextToSpeech
-import java.util.*
+import java.util.Locale
 
 class TTS(val context: Context): TextToSpeech.OnInitListener {
     private val tts = TextToSpeech(context, this)
